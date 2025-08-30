@@ -1,0 +1,60 @@
+anti vibe-coding guidelines
+---------------------------
+
+updates
+-------
+npx npm-check-updates
+
+svelteKit
+---------
+in parent folder:
+npx sv create myapp
+
+
+setup
+-----
+- tools: with nvm, install node 24.4.1, in vsCode, install kilocode plugin
+- in kilocode, add: brave search mcp
+- setup the "custom instructions", for example:
+"Avoid redundancy by re-using elements that are already there and adapt them while avoiding breaking existing code that rely on it.
+Remove element that don't have any effect (dead code) to keep the code uncluttered.
+When removing or changing parts of code:
+1.) Check the WHOLE code AND it's dependencies to not break existing behaviour.
+2.) Imports should ALWAYS be at the top of the file.
+3.) ALWAYS implement the plan to it's END. Including imports & exports in the files encompassed in the plan.
+NEVER add empty lines or comments in any code you write or modify, so if there are remove them.
+Don't EVER try to run the server."
+- in cline, use: openrouter.ai(create an account, get API-key and add credits) with gpt-4-1-mini
+
+workflow
+--------
+- ALWAYS MAKE 7Z BACKUPS OF STABLE VERSIONS (backup often)
+- when diff errors or hallucinations start to crop-up:
+1.) create new prompt to stop the process (+)
+2.) restore last stable backup
+3.) start from scratch with the below template
+- NEVER completely trust the AI:
+1.) stay in plan mode until the proposed code & solution makes sense
+2.) check online for API docs & modules versions
+3.) if necessary, copy, paste examples & relevant refs in the prompt to correct the AI
+4.) after AI implementation: check imports & exports
+prompt template
+---------------
+NEVER add empty lines or comments in any code you write or modify, so if there are any remove them.
+
+Using svelteKit I want to create a search page for https://search.ch/tel/api using the doc here: https://search.ch/tel/api/help
+use the .env file for the api key
+there will be ONLY one field for the name and a search button. no styling is necessary keep the code minimal and concise so I can understand what's going on
+when i click the search button I want the EXACT & COMPLETE url sent to search.ch to be displayed in chrome console.
+then also in chrome console the EXACT & COMPLETE raw reply from search.ch
+Don't EVER try to run the local server, I will do it myself.
+
+
+roadMap
+--------
+Results are only logged; no UI rendering or download/export of the data.
+No deduplication of values; arrays may contain duplicates across cantons/pages.
+Uses regex to parse XML, which can be brittle; a real XML parser would be more robust.
+The response is flattened into parallel arrays rather than structured per-entry objects.
+No pagination/continuation beyond maxnum=200; no caching or rate limiting.
+Minimal error handling if the upstream service changes or throttles.
